@@ -18,33 +18,44 @@ function App() {
         autoSave="on"
         unselectable="on"
       >
-        <div className="flex flex-col gap-2">
-          <label htmlFor="appId">App ID</label>
-          <input
-            type="text"
-            name="appId"
-            className="border border-gray-300 rounded-md p-2"
-          />
+        <div className="bg-zinc-600 p-5 rounded-md">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="appId">App ID</label>
+            <input
+              type="text"
+              name="appId"
+              className="border border-gray-300 rounded-md p-2 w-[385px]"
+              autoComplete="on"
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="accessToken">Access Token</label>
+            <input
+              type="text"
+              name="accessToken"
+              className="border border-gray-300 rounded-md p-2 w-[385px]"
+              autoComplete="on"
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="userId">User ID</label>
+            <input
+              type="text"
+              name="userId"
+              className="border border-gray-300 rounded-md p-2 w-[385px]"
+              autoComplete="on"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-blue-500 text-white rounded-md p-2 w-[385px] mt-5"
+          >
+            Submit
+          </button>
         </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="accessToken">Access Token</label>
-          <input
-            type="text"
-            name="accessToken"
-            className="border border-gray-300 rounded-md p-2"
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="userId">User ID</label>
-          <input
-            type="text"
-            name="userId"
-            className="border border-gray-300 rounded-md p-2"
-          />
-        </div>
-        <button type="submit" className="bg-blue-500 text-white rounded-md p-2">
-          Submit
-        </button>
       </form>
     </div>
   );
