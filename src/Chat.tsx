@@ -1,6 +1,5 @@
 import "@sendbird/uikit-react/dist/index.css";
 
-import { useState } from "react";
 import Tabs from "./Tabs";
 import Multiple from "./Multiple";
 import MultipleChatsLegacy from "./Multiple-Legacy";
