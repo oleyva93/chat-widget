@@ -49,6 +49,14 @@ function App() {
               required
             />
           </div>
+          <input
+            type="text"
+            name="tab"
+            value="tabs"
+            className="border border-gray-300 rounded-md p-2 w-[385px] hidden"
+            autoComplete="on"
+            required
+          />
           <button
             type="submit"
             className="bg-blue-500 text-white rounded-md p-2 w-[385px] mt-5"

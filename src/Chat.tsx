@@ -14,37 +14,56 @@ function Chat({
   userId: string;
   accessToken: string;
 }) {
-  const [activeTab, setActiveTab] = useState<"tabs" | "multiple" | "legacy">(
-    "tabs"
-  );
+  const params = new URLSearchParams(window.location.search);
+  const tab = params.get("tab") || "tabs";
 
   return (
     <div className="flex w-screen h-screen">
       <div className="h-full bg-white border-r border-gray-200">
         <div
           className={`flex-1 flex flex-col text-black p-2 hover:bg-gray-100 cursor-pointer border-b border-gray-200 ${
-            activeTab === "tabs" ? "bg-gray-100" : ""
+            tab === "tabs" ? "bg-gray-100" : ""
           }`}
-          onClick={() => setActiveTab("tabs")}
+          onClick={() => {
+            window.location.href =
+              "/?tab=tabs&appId=" +
+              appId +
+              "&userId=" +
+              userId +
+              "&accessToken=" +
+              accessToken;
+          }}
         >
           Tabs
         </div>
         <div
           className={`flex-1 flex flex-col text-black p-2 hover:bg-gray-100 cursor-pointer border-b border-gray-200 ${
-            activeTab === "multiple" ? "bg-gray-100" : ""
+            tab === "multiple" ? "bg-gray-100" : ""
           }`}
           onClick={() => {
-            setActiveTab("multiple");
+            window.location.href =
+              "/?tab=multiple&appId=" +
+              appId +
+              "&userId=" +
+              userId +
+              "&accessToken=" +
+              accessToken;
           }}
         >
           Multiple
         </div>
         <div
           className={`flex-1 flex flex-col text-black p-2 hover:bg-gray-100 cursor-pointer border-b border-gray-200 ${
-            activeTab === "legacy" ? "bg-gray-100" : ""
+            tab === "legacy" ? "bg-gray-100" : ""
           }`}
           onClick={() => {
-            setActiveTab("legacy");
+            window.location.href =
+              "/?tab=legacy&appId=" +
+              appId +
+              "&userId=" +
+              userId +
+              "&accessToken=" +
+              accessToken;
           }}
         >
           Multiple
@@ -60,13 +79,13 @@ function Chat({
         </div>
       </div>
 
-      {activeTab === "tabs" && (
+      {tab === "tabs" && (
         <Tabs appId={appId} userId={userId} accessToken={accessToken} />
       )}
-      {activeTab === "multiple" && (
+      {tab === "multiple" && (
         <Multiple appId={appId} userId={userId} accessToken={accessToken} />
       )}
-      {activeTab === "legacy" && (
+      {tab === "legacy" && (
         <MultipleChatsLegacy
           appId={appId}
           userId={userId}
