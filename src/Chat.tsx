@@ -66,7 +66,7 @@ function Chat({
           }}
         >
           Multiple
-          <span className="text-xs text-gray-500">Legacy</span>
+          <span className="text-xs text-gray-500">Deprecated</span>
         </div>
         <div
           className={`flex-1 flex flex-col text-black p-2  cursor-pointer bg-red-500 text-white`}
