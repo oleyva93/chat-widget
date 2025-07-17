@@ -3,6 +3,7 @@ import "@sendbird/uikit-react/dist/index.css";
 import { useState } from "react";
 import Tabs from "./Tabs";
 import Multiple from "./Multiple";
+import MultipleChatsLegacy from "./Multiple-Legacy";
 
 function Chat({
   appId,
@@ -13,7 +14,9 @@ function Chat({
   userId: string;
   accessToken: string;
 }) {
-  const [activeTab, setActiveTab] = useState<"tabs" | "multiple">("tabs");
+  const [activeTab, setActiveTab] = useState<"tabs" | "multiple" | "legacy">(
+    "tabs"
+  );
 
   return (
     <div className="flex w-screen h-screen">
@@ -31,13 +34,21 @@ function Chat({
             activeTab === "multiple" ? "bg-gray-100" : ""
           }`}
           onClick={() => {
-            alert(
-              "Oscar's Note: Unfortunately, UIKit is not supported in multiple chat instances, try open multiple channels and write a message to each one of them (the first one can't send messages), this is a limitation of the Sendbird SDK UIKit :("
-            );
             setActiveTab("multiple");
           }}
         >
           Multiple
+        </div>
+        <div
+          className={`flex-1 flex flex-col text-black p-2 hover:bg-gray-100 cursor-pointer border-b border-gray-200 ${
+            activeTab === "legacy" ? "bg-gray-100" : ""
+          }`}
+          onClick={() => {
+            setActiveTab("legacy");
+          }}
+        >
+          Multiple
+          <span className="text-xs text-gray-500">Legacy</span>
         </div>
         <div
           className={`flex-1 flex flex-col text-black p-2  cursor-pointer bg-red-500 text-white`}
@@ -54,6 +65,13 @@ function Chat({
       )}
       {activeTab === "multiple" && (
         <Multiple appId={appId} userId={userId} accessToken={accessToken} />
+      )}
+      {activeTab === "legacy" && (
+        <MultipleChatsLegacy
+          appId={appId}
+          userId={userId}
+          accessToken={accessToken}
+        />
       )}
     </div>
   );

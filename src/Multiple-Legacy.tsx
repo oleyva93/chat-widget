@@ -2,13 +2,14 @@ import "@sendbird/uikit-react/dist/index.css";
 import React, { useState } from "react";
 import SendbirdProvider from "@sendbird/uikit-react/SendbirdProvider";
 import { GroupChannelList } from "@sendbird/uikit-react/GroupChannelList";
-import GroupChannel from "@sendbird/uikit-react/GroupChannel";
 import ChannelSettings from "@sendbird/uikit-react/ChannelSettings";
 import Header from "@sendbird/uikit-react/ui/Header";
 import UserProfile from "@sendbird/uikit-react/ui/UserProfile";
 import UserListItem from "@sendbird/uikit-react/ui/UserListItem";
 import ChannelSettingMenuList from "@sendbird/uikit-react/ChannelSettings/components/ChannelSettingMenuList";
 import GroupChannelListHeader from "@sendbird/uikit-react/GroupChannelList/components/GroupChannelListHeader";
+
+import { Channel } from "@sendbird/uikit-react";
 
 interface MultipleChatsProps {
   appId: string;
@@ -42,7 +43,7 @@ const ChatWindow: React.FC<{ entry: ChannelEntry }> = ({ entry }) => {
 
   return (
     <div className="relative w-[450px] h-[600px] border">
-      <GroupChannel
+      <Channel
         key={entry.key}
         channelUrl={entry.url}
         onChatHeaderActionClick={() => setShowSettings((prev) => !prev)}
@@ -100,7 +101,7 @@ const ChatWindow: React.FC<{ entry: ChannelEntry }> = ({ entry }) => {
   );
 };
 
-const MultipleChats: React.FC<MultipleChatsProps> = ({
+const MultipleChatsLegacy: React.FC<MultipleChatsProps> = ({
   appId,
   userId,
   accessToken,
@@ -141,4 +142,4 @@ const MultipleChats: React.FC<MultipleChatsProps> = ({
   );
 };
 
-export default MultipleChats;
+export default MultipleChatsLegacy;
