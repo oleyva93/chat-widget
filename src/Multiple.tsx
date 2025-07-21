@@ -129,7 +129,7 @@ const MultipleChats: React.FC<MultipleChatsProps> = ({
       userId={userId}
       accessToken={accessToken}
       sdkInitParams={{
-        appStateToggleEnabled: true,
+        appStateToggleEnabled: false,
       }}
       uikitOptions={{
         groupChannelList: {
