@@ -30,15 +30,15 @@ const MultipleChats: React.FC<MultipleChatsProps> = ({
   };
 
   return (
-    <div className="flex h-screen">
-      <SendbirdProvider
-        appId={appId}
-        userId={userId}
-        accessToken={accessToken}
-        sdkInitParams={{
-          appStateToggleEnabled: false,
-        }}
-      >
+    <SendbirdProvider
+      appId={appId}
+      userId={userId}
+      accessToken={accessToken}
+      sdkInitParams={{
+        appStateToggleEnabled: false,
+      }}
+    >
+      <div className="flex h-screen">
         <div className="w-80 border-r">
           <GroupChannelList
             disableAutoSelect
@@ -46,29 +46,19 @@ const MultipleChats: React.FC<MultipleChatsProps> = ({
             onChannelSelect={(c) => c && handleSelection(c.url, c.name)}
           />
         </div>
-      </SendbirdProvider>
 
-      <div className="flex-1 p-4 flex flex-wrap gap-4 overflow-auto">
-        {channels.map((entry) => (
-          <SendbirdProvider
-            key={entry.key}
-            appId={appId}
-            userId={userId}
-            accessToken={accessToken}
-            sdkInitParams={{
-              appStateToggleEnabled: false,
-            }}
-          >
+        <div className="flex-1 p-4 flex flex-wrap gap-4 overflow-auto">
+          {channels.map((entry) => (
             <div
               className="relative w-[450px] h-[600px] border"
               key={entry.key}
             >
               <GroupChannel key={entry.key} channelUrl={entry.url} />
             </div>
-          </SendbirdProvider>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </SendbirdProvider>
   );
 };
 
