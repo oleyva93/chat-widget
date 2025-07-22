@@ -55,6 +55,9 @@ const MultipleChats: React.FC<MultipleChatsProps> = ({
             appId={appId}
             userId={userId}
             accessToken={accessToken}
+            sdkInitParams={{
+              appStateToggleEnabled: false,
+            }}
           >
             <div
               className="relative w-[450px] h-[600px] border"
